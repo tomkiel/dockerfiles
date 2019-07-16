@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./dbserver:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress
+    working_dir: /var/www/html
+    volumes:
+      - ./webserver:/var/www/html/wp-content/themes/fossday-vega
+      - ./scripts:/opt/scripts
+    ports:
+      - "80:80"
+    links:
+      - db:mysql
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      ENV: local
+volumes:
+    db_data:
+    legacy_files:
