@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+  pgsql:
+      image: postgres:latest
+      volumes:
+          - ./database:${PGSQL_DATA_DIR}
+      networks:
+        - app-network
+      ports:
+        - "${PGSQL_PORT}:5432"
+      environment:
+        - POSTGRES_DB:${PGSQL_DB}
+        - POSTGRES_USER:${PGSQL_USER}
+        - POSTGRES_PASSWORD:${PGSQL_PASS}
+  httpd:
+    build:
+        context: ./httpd
+        args:
+          - WEB_USER=${WEB_USER}
+          - WEB_GROUP=${WEB_GROUP}
+          - APACHE_DOCUMENT_ROOT=${WEB_ROOT}
+    volumes:
+        - ./webserver:/var/www/html
+        - ./httpd/conf/apache2.conf:/etc/apache2/apache2.conf
+        - ./httpd/conf/sites-available:/etc/apache2/sites-available/
+        - ./logs:/var/log/apache2/
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - pgsql
+    links:
+      - pgsql
+    networks:
+      - app-network
+    environment:
+      - WEB_USER=${WEB_USER}
+      - WEB_GROUP=${WEB_GROUP}
+networks:
+    app-network:
+        driver: bridge

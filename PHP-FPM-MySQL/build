@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build . -t dose/php7.3.7-fpm

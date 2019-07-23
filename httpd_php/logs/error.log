@@ -1,0 +1,10 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.24.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Jul 23 04:33:55.670815 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.20 configured -- resuming normal operations
+[Tue Jul 23 04:33:55.670898 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Jul 23 04:34:17.386910 2019] [autoindex:error] [pid 18] [client 172.24.0.1:44626] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Jul 23 13:17:11.318686 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.24.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Jul 23 13:17:21.045134 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.20 configured -- resuming normal operations
+[Tue Jul 23 13:17:21.045206 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Jul 23 13:17:29.893869 2019] [autoindex:error] [pid 16] [client 172.24.0.1:46648] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Jul 23 13:23:29.723164 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down

@@ -1,0 +1,4 @@
+#!/bin/bash
+docker-compose up -d --build
+
+docker exec floppo_httpd chown -R root:www-data /var/log/apache2/
